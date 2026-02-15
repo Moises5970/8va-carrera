@@ -134,7 +134,7 @@ elif cp == 'P':
     
     #comparacion de precios
     if costo == costoii:
-        total= 80 if (costo == 50 and costoii) == 50 else 150
+        total= 80 if (costo == 50 and costoii == 50) else 150
         
         corr2 = medallas + 1
         
