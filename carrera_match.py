@@ -53,13 +53,6 @@ match cat:
     case 4 | 5 | 6 | 7 | 8 | 9:
         costo = 80
 
-match cat:
-    case 1 | 2 | 3:
-        costoii = 50
-    case 4 | 5 | 6 | 7 | 8 | 9:
-        costoii = 80
-
-
 #Costos y promociones
 cp = input('Individual o Pareja (I/P): ').upper()
 if not (cp == 'I' or cp == 'P'):
@@ -69,8 +62,8 @@ if not (cp == 'I' or cp == 'P'):
 #match case
 match cp:
     case "I":
-        registro = medallas + 1
-        status = "¡Ganada!" if registro <= 100 else "Agotada"
+        cor1 = medallas + 1
+        status = "¡Ganada!" if cor1 <= 100 else "Agotada"
         print(f'''
           Nombre: {nombre}
           Edad: {edad}
@@ -84,6 +77,20 @@ match cp:
         nombreii = input("Nombre del segundo corredor: ").strip()
         if not nombreii: 
             print("Error: nombre vacío"); exit()
+        
+        try:
+            edadii = int(input("Ingresa tu edad: "))
+            if not edadii:
+                print("Error: la edad no puede estar vacia.")
+                exit()
+        except:
+            print("Error: la edad debe ser un numero.")
+            exit()
+        
+        generoii = input("Genero (M/F): ").upper()
+        if not (generoii == 'M' or generoii == 'F'):
+            print("Error: genero invalido.")
+            exit()
             
         try:
             catii = int(input("Categoría del segundo corredor: "))
@@ -101,13 +108,26 @@ match cp:
 
         # Regla de Parejas
         if costo == costoii:
-            total = 80 if costo == 50 else 150
-            reg1, reg2 = medallas + 1, medallas + 2
+            total= 80 if (costo == 50 and costoii == 50) else 150
+        
+            medallas += 1
+            cor1 = medallas
+            medallas += 1
+            cor2 = medallas
+            
+            status1 = "¡Ganada!" if cor1 <= 100 else "Agotada"
+            status2 = "¡Ganada!" if cor2 <= 100 else "Agotada"
             
             print(f'''
-            --- REGISTRO PAREJA (Total: ${total}) ---
-            1. {nombre}: {'Medalla Ganada' if reg1 <= 100 else 'Agotada'} (#{reg1})
-            2. {nombreii}: {'Medalla Ganada' if reg2 <= 100 else 'Agotada'} (#{reg2})
+            Nombre: {nombre} | {nombreii}
+            Edad: {edad} | {edadii}
+            Genero: {genero} | {generoii}
+            Categoria: {cat} | {catii}
+            costo: {total}
+            Medalla: 
+                {nombre} {status1}
+                {nombreii} {status2}
             ''')
+            exit()
         else:
             print("Error: Las categorías tienen precios distintos.")
