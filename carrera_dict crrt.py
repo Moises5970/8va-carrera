@@ -63,7 +63,7 @@ if nombre:
                                                         #primera catergoria
                                                         info_cat = categorias[cat]
                                                         
-                                                        #costo 1
+                                                        #costo 2
                                                         costo = info_cat["precio"]
                                                         
                                                         #segunda categoria
