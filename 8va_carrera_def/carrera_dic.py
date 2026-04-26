@@ -21,8 +21,8 @@ def solicitar_nombre():
         nombre = input('Ingresa tu nombre: ').strip()
         if not nombre:
             print("Error: le nombre no puede esta vacio")
-        elif not  nombre.replace(" ", "").isalpha():
-            print("Errore, el nombre solo debe contener caracteres alfabeticos")
+        elif not nombre.replace(" ", "").isalpha():
+            print("Error, el nombre solo debe contener caracteres alfabeticos")
         else:
             return nombre
 
